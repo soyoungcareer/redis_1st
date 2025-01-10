@@ -1,1 +1,3 @@
-rootProject.name = 'demo'
+rootProject.name = 'cinema'
+include 'cinema-core', 'cinema-common', 'cinema-infra', 'cinema-application', 'cinema-adapter'
+

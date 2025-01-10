@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management' // 루트의 dependency-management 상속
+}
+
+group = 'com.cinema'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(':cinema-core')
+    implementation 'org.springframework.boot:spring-boot-starter'
+}
