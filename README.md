@@ -11,6 +11,7 @@
 >- JPA
 >- MySQL
 >- Docker Compose
+>- IntelliJ Http Request
 
 **Clean Code 작성 요구 사항**
 >- 가독성 (클래스, 변수, 메서드 이름)
@@ -27,7 +28,7 @@
 ## [1주차] 아키텍처 설계
 
 ### 테이블 구조
-![erd image](docs/images/ERD.png)
+![erd image](docs/images/erd.png)
 테이블 : 영화, 장르, 상영관, 상영시간표, 좌석, 회원, 예매
 >- 영화 썸네일 이미지는 URL로만 사용하므로 편의상 파일 테이블을 따로 생성하지 않음.
 >- 공통코드는 공통코드 테이블을 생성하지 않고 ENUM으로 관리함. (영상물 등급, 좌석유형)
@@ -63,3 +64,27 @@
 > `cinema-infra`는 기술적인 환경을 세팅하는 모듈로 데이터베이스 연결 설정, 외부 라이브러리 설정 등을 함.
 > `cinema-common` 모듈은 공통으로 사용할 수 있는 유틸을 묶어두어 범용성 있게 구성하였음. 
 > 단, 모듈이 비대해지고 강결합이 발생하지 않도록 변화가 적으며 비즈니스 로직과 관련 없는 코드만 사용하도록 명확히 하여야 함.
+
+---
+
+### 해결할 문제
+애플리케이션 실행 시 다음과 같은 오류 발생하여 정상적으로 실행되지 않음.
+```dockerfile
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+        If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+        If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+```
+-> compose.yaml, application.yml 파일을 수정해보았으나 해결하지 못하였음. `Docker compose` 실행은 정상적으로 되는 상태이나 app url 연결에 문제가 발생하는 것으로 보임.
