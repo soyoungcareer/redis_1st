@@ -68,7 +68,7 @@
 ---
 
 ### 해결할 문제
-애플리케이션 실행 시 다음과 같은 오류 발생하여 정상적으로 실행되지 않음.
+**(문제)** 애플리케이션 실행 시 다음과 같은 오류 발생하여 정상적으로 실행되지 않음.
 ```dockerfile
 ***************************
 APPLICATION FAILED TO START
@@ -88,3 +88,5 @@ Consider the following:
         If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
 ```
 -> compose.yaml, application.yml 파일을 수정해보았으나 해결하지 못하였음. `Docker compose` 실행은 정상적으로 되는 상태이나 app url 연결에 문제가 발생하는 것으로 보임.
+
+**(해결)** Docker 포트 변경하여 해결함. 기존 3306 포트 3307로 변경하여 docker compose up 하여 띄운 후 CinemaApplication 실행하니 정상적으로 실행됨.
