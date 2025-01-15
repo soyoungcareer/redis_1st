@@ -7,6 +7,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none # Hibernate가 DDL을 생성하지 않도록 설정
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect

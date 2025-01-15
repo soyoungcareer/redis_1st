@@ -10,4 +10,6 @@ version = '0.0.1-SNAPSHOT'
 dependencies {
     implementation project(':cinema-core')
     implementation project(':cinema-infra')
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 }
