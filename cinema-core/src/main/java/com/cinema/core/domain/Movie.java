@@ -7,31 +7,23 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "movie")
 @Getter
 @Setter
 public class Movie extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id")
+    @Column(columnDefinition = "INT UNSIGNED")
     private Long movieId;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "grade_cd")
-    private String gradeCd;
+    private String gradeCd; // 영상물 등급 코드 [ENUM]
 
-    @Column(name = "rlse_date")
     private LocalDate rlseDate;
 
-    @Column(name = "thumb_img")
     private String thumbImg;
 
-    @Column(name = "run_time")
-    private Integer runTime;
+    private Integer runtimeMin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "genre_id", referencedColumnName = "genre_id")
-    private Genre genre;
+    private String genreCd; // 장르 코드 [ENUM]
 }

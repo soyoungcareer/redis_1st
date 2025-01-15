@@ -5,17 +5,25 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Getter
 @Setter
-public class User extends BaseEntity {
+public class Screening extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
-    private Long userId;
+    private Long timeId;
 
-    private String userNm;
+    private Long movieId;
 
-    private LocalDate birthDate;
+    private Long theaterId;
+
+    private LocalDate showDate;
+
+    private LocalTime startTime;
+
+    private LocalTime endTime;
 }
+

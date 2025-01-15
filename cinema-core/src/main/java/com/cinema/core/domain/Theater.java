@@ -5,15 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "genre")
 @Getter
 @Setter
-public class Genre extends BaseEntity {
+public class Theater extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "genre_id")
-    private Long genreId;
+    @Column(columnDefinition = "INT UNSIGNED")
+    private Long theaterId;
 
-    @Column(name = "genre_nm")
-    private String genreNm;
+    private String theaterNm;
+
+    private String location;
 }
