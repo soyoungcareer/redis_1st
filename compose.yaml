@@ -12,6 +12,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./ddl.sql:/docker-entrypoint-initdb.d/ddl.sql:ro
+      - ./dummy_data.sql:/docker-entrypoint-initdb.d/dummy_data.sql:ro
     networks:
       - cinema_network
 

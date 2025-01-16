@@ -12,7 +12,11 @@ import java.util.List;
 public class MovieService {
     private final MovieRepository movieRepository;
 
-    public List<Movie> getBookableMovies() {
-        return movieRepository.findBookableMovies();
+    public List<Movie> getMovies(boolean bookable) {
+        if (bookable) {
+            return movieRepository.findBookableMovies();
+        } else {
+            return movieRepository.findAll();
+        }
     }
 }

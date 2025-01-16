@@ -11,12 +11,11 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     @Query("""
         SELECT DISTINCT m FROM Movie m
-          JOIN FETCH m.genre g
-          JOIN Timetable t ON m.movieId = t.movieId
-          JOIN Box b ON t.boxId = b.boxId
-         WHERE t.showDate > CURRENT_DATE
-            OR (t.showDate = CURRENT_DATE AND t.startTime > CURRENT_TIME)
-         ORDER BY m.rlseDate DESC, t.startTime ASC
+          JOIN Screening s ON m.movieId = s.movieId
+          JOIN Theater t ON t.theaterId = s.theaterId
+         WHERE s.showDate > CURRENT_DATE
+            OR (s.showDate = CURRENT_DATE AND s.startTime > CURRENT_TIME)
+         ORDER BY m.rlseDate DESC
     """)
     List<Movie> findBookableMovies();
 }
