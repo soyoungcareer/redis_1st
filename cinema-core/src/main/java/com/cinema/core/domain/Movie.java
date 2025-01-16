@@ -4,12 +4,15 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
-public class Movie extends BaseEntity {
+public class Movie extends BaseEntity implements Serializable {
+    private static final long serialVersionUID = -4290967803761576977L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
