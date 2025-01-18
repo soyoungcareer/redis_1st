@@ -13,3 +13,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+  cache:
+    type: simple # 기본적으로 메모리 캐시 사용
