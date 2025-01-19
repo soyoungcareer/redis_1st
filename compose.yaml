@@ -11,8 +11,11 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
+#      - ./ddl_no_index.sql:/docker-entrypoint-initdb.d/ddl_no_index.sql:ro
       - ./ddl.sql:/docker-entrypoint-initdb.d/ddl.sql:ro
       - ./dummy_data.sql:/docker-entrypoint-initdb.d/dummy_data.sql:ro
+      - ./dummy_data_movie.sql:/docker-entrypoint-initdb.d/dummy_data_movie.sql:ro
+      - ./dummy_data_screening.sql:/docker-entrypoint-initdb.d/dummy_data_screening.sql:ro
     networks:
       - cinema_network
 #  app:

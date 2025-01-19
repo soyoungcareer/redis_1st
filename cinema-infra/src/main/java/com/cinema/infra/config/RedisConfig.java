@@ -90,6 +90,8 @@ public class RedisConfig {
         // 기본적으로 직렬화를 수행
         redisTemplate.setDefaultSerializer(new StringRedisSerializer());
 
+        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+
         return redisTemplate;
     }
 }

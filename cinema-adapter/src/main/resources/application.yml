@@ -21,6 +21,7 @@ spring:
 #      host: redis-container
       port: 6379
 #      password: cinema_password
+      serializer: jackson
   cache:
     type: redis
   http:

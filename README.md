@@ -1,10 +1,10 @@
-## [본 과정] 이커머스 핵심 프로세스 구현
+# [본 과정] 이커머스 핵심 프로세스 구현
 [단기 스킬업 Redis 교육 과정](https://hh-skillup.oopy.io/) 을 통해 상품 조회 및 주문 과정을 구현하며 현업에서 발생하는 문제를 Redis의 핵심 기술을 통해 해결합니다.
 > Indexing, Caching을 통한 성능 개선 / 단계별 락 구현을 통한 동시성 이슈 해결 (낙관적/비관적 락, 분산락 등)
 
 ---
 
-## 개발환경
+# 개발환경
 >- Spring Boot 3.4.1
 >- Java 21
 >- Gradle
@@ -25,9 +25,9 @@
 
 ---
 
-## [1주차] 아키텍처 설계
+# [1주차] 아키텍처 설계
 
-### 테이블 구조
+## 테이블 구조
 ![erd image](docs/images/corrected_erd.png)
 테이블 : 영화, 상영관, 상영시간표, 좌석, 회원, 예매
 >- 영화 썸네일 이미지는 URL로만 사용하므로 편의상 파일 테이블을 따로 생성하지 않음.
@@ -35,7 +35,7 @@
 
 ---
 
-### 아키텍처(Hexagonal Architecture)
+## 아키텍처(Hexagonal Architecture)
 - `cinema-core`
   <br> => *도메인, 엔티티, 비즈니스 로직*
   * 비즈니스 로직의 중심으로, 외부 변화에 의존하지 않도록 설계.
@@ -67,7 +67,7 @@
 
 ---
 
-### 해결할 문제 1 - 해결 완료
+## 해결할 문제 1 - 해결 완료
 **(문제)** 애플리케이션 실행 시 다음과 같은 오류 발생하여 정상적으로 실행되지 않음.
 ```dockerfile
 ***************************
@@ -93,7 +93,7 @@ Consider the following:
 
 ---
 
-### [1주차] 피드백 후 수정사항
+## [1주차] 피드백 후 수정사항
 <span style="color: #2D3748; background-color: #fff5b1"><strong>기존테이블</strong></span>
 ![erd image](docs/images/erd.png)
 
@@ -137,7 +137,7 @@ Consider the following:
 
 ---
 
-### 해결할 문제 2
+## 해결할 문제 2
 **(문제)** 엔티티와 테이블 간 자동 매핑이 되지 않음. 
 `application.yml` 파일에 아래와 같이 설정을 하였으나, 스네이크케이스와 카멜케이스 간 자동 변환이 되지 않아 발생하는 문제로 보임.
 임시로 `@Table`, `@Column(name="")`을 사용하여 매핑되게 설정하였음. 나중에 여유가 된다면 해결해볼 예정.
@@ -150,7 +150,7 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
 ```
 
-### 해결할 문제 3
+## 해결할 문제 3
 **(문제)** Querydsl 의존성 추가 시 Q클래스 생성되지 않는 문제 발생하여
 IntelliJ 의 `Build Complier > Annotation Processors` 설정 변경하니,
 ![problem3-2](docs/images/problem3-2.jpg)
@@ -169,10 +169,10 @@ build.gradle 파일을 수정하여 다양한 방법으로 시도하였으나 �
 
 # [2주차] 성능 테스트
 
-### 검색 조건 추가
+## 검색 조건 추가
 - 제목, 장르 필터
 
-### 인덱스 추가
+## 인덱스 추가
 - 영화 : (조인) 영화 ID / (정렬) 개봉일 / (검색) 제목+장르
 - 상영시간표 : (조인) 상영시간표 ID, 영화 ID, 상영관 ID / (정렬) 시작시각
 - 상영관 : (조인) 상영시간표 ID
@@ -180,8 +180,244 @@ build.gradle 파일을 수정하여 다양한 방법으로 시도하였으나 �
 - 예매 : (조인) 예매 ID, 좌석 ID, 회원 ID, 상영시간표 ID
 - 회원 : (조인) 회원 ID
 
+```sql
+/* movie */
+-- 영화 ID (조인 키)
+CREATE INDEX idx_movie_movie_id ON movie (movie_id);
+-- 제목 + 장르 복합 인덱스
+CREATE INDEX idx_movie_title_genre ON movie (title, genre_cd);
+-- 개봉일 인덱스 (정렬 조건)
+CREATE INDEX idx_movie_rlse_date ON movie (rlse_date);
+
+/* screening */
+-- 상영시간표 ID (조인 키)
+CREATE INDEX idx_screening_screening_id ON screening (screening_id);
+-- 영화 ID (조인 키)
+CREATE INDEX idx_screening_movie_id ON screening (movie_id);
+-- 상영관 ID (조인 키)
+CREATE INDEX idx_screening_theater_id ON screening (theater_id);
+-- 시작 시각 인덱스 (정렬 조건)
+CREATE INDEX idx_screening_start_time ON screening (start_time);
+
+/* theater */
+-- 상영관 ID (조인 키)
+CREATE INDEX idx_theater_theater_id ON theater (theater_id);
+
+/* seat */
+-- 좌석 ID (조인 키)
+CREATE INDEX idx_seat_seat_id ON seat (seat_id);
+
+/* ticket */
+-- 예매 ID (조인 키)
+CREATE INDEX idx_ticket_ticket_id ON ticket (ticket_id);
+-- 좌석 ID (조인 키)
+CREATE INDEX idx_ticket_seat_id ON ticket (seat_id);
+-- 회원 ID (조인 키)
+CREATE INDEX idx_ticket_user_id ON ticket (user_id);
+-- 상영시간표 ID (조인 키)
+CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
+
+/* user */
+-- 회원 ID (조인 키)
+CREATE INDEX idx_user_user_id ON `user` (user_id);
+```
+
+## 성능 테스트 (k6)
+### 쿼리 (실제로 동작하는 쿼리)
+```sql
+select
+    distinct m1_0.movie_id,
+    m1_0.title,
+    m1_0.grade_cd,
+    m1_0.rlse_date,
+    m1_0.thumb_img,
+    m1_0.runtime_min,
+    m1_0.genre_cd,
+    null 
+from
+    movie m1_0 
+where
+    (
+        ? is null 
+        or m1_0.title like replace(?, '\\', '\\\\')
+    ) 
+    and (
+        ? is null 
+        or m1_0.genre_cd=?
+    ) 
+order by
+    m1_0.rlse_date;
+    
+select
+    s1_0.screening_id,
+    t1_0.theater_nm,
+    s1_0.start_time,
+    s1_0.end_time 
+from
+    screening s1_0 
+join
+    theater t1_0 
+        on s1_0.theater_id=t1_0.theater_id 
+where
+    s1_0.movie_id=? 
+order by
+    s1_0.start_time;
+```
+### 실행 계획 조회 쿼리
+```sql
+EXPLAIN ANALYZE
+ select
+        distinct m1_0.movie_id,
+        m1_0.title,
+        m1_0.grade_cd,
+        m1_0.rlse_date,
+        m1_0.thumb_img,
+        m1_0.runtime_min,
+        m1_0.genre_cd,
+        null 
+    from
+        movie m1_0 
+    where
+        (
+            'Red Heat' is null 
+            or m1_0.title like replace('Red Heat', '\\', '\\\\')
+        ) 
+        and (
+            'ACTION' is null 
+            or m1_0.genre_cd='ACTION'
+        ) 
+    order by
+        m1_0.rlse_date;
+        
+EXPLAIN ANALYZE
+ select
+        s1_0.screening_id,
+        t1_0.theater_nm,
+        s1_0.start_time,
+        s1_0.end_time 
+    from
+        screening s1_0 
+    join
+        theater t1_0 
+            on s1_0.theater_id=t1_0.theater_id 
+    where
+        s1_0.movie_id=1
+    order by
+        s1_0.start_time;
+```
+
+
+### *인덱스 X, 캐싱 X*
+#### 실행 계획
+- like 비교연산자 적용
+    ```bash
+    -> Sort: m1_0.rlse_date  (cost=51.8 rows=500) (actual time=1.57..1.57 rows=1 loops=1)
+        -> Filter: ((m1_0.title like <cache>(convert(replace('Red Heat','\\','\\\\') using utf8mb4))) and (m1_0.genre_cd = 'ACTION'))  (cost=51.8 rows=500) (actual time=0.606..1.54 rows=1 loops=1)
+            -> Table scan on m1_0  (cost=51.8 rows=500) (actual time=0.399..1.33 rows=500 loops=1)
+    ```
+- 동등연산자 적용
+    ```dockerfile
+    -> Sort: m1_0.rlse_date  (cost=51.8 rows=500) (actual time=0.995..0.995 rows=1 loops=1)
+        -> Filter: ((m1_0.title = 'Red Heat') and (m1_0.genre_cd = 'ACTION'))  (cost=51.8 rows=500) (actual time=0.232..0.909 rows=1 loops=1)
+            -> Table scan on m1_0  (cost=51.8 rows=500) (actual time=0.102..0.78 rows=500 loops=1)
+    ```
+- 상영시간표 조회 쿼리
+    ```bash
+    -> Sort: s1_0.start_time  (actual time=4.31..4.31 rows=9 loops=1)
+        -> Stream results  (cost=413 rows=2.13) (actual time=0.43..4.19 rows=9 loops=1)
+            -> Inner hash join (s1_0.theater_id = t1_0.theater_id)  (cost=413 rows=2.13) (actual time=0.422..4.15 rows=9 loops=1)
+                -> Filter: (s1_0.movie_id = 1)  (cost=79.1 rows=42.6) (actual time=0.326..4.02 rows=9 loops=1)
+                    -> Table scan on s1_0  (cost=79.1 rows=4262) (actual time=0.324..3.41 rows=4500 loops=1)
+                -> Hash
+                    -> Table scan on t1_0  (cost=0.75 rows=5) (actual time=0.0423..0.0495 rows=5 loops=1)
+    ```
+#### 부하 테스트 결과 (스크린샷)
+> thresholds on metrics 'http_req_duration' have been crossed 계속 발생하여 summary.html 파일이 저장되지 않음.
+
+
+### *인덱스 O, 캐싱 X*
+#### 실행 계획
+
+- like 비교연산자 적용
+    ```dockerfile
+    -> Sort: m1_0.rlse_date  (cost=0.71 rows=1) (actual time=0.419..0.419 rows=1 loops=1)
+        -> Index range scan on m1_0 using idx_movie_title_genre over (title = 'Red Heat' AND genre_cd = 'ACTION'), with index condition: ((m1_0.title like <cache>(convert(replace('Red Heat','\\','\\\\') using utf8mb4))) and (m1_0.genre_cd = 'ACTION'))  (cost=0.71 rows=1) (actual time=0.312..0.316 rows=1 loops=1)
+    ```
+- 동등연산자 적용
+    ```dockerfile
+    -> Sort: m1_0.rlse_date  (cost=1.1 rows=1) (actual time=0.293..0.293 rows=1 loops=1)
+        -> Index lookup on m1_0 using idx_movie_title_genre (title='Red Heat', genre_cd='ACTION')  (cost=1.1 rows=1) (actual time=0.212..0.218 rows=1 loops=1)
+    ```
+- 상영시간표 조회 쿼리
+    ```dockerfile
+    -> Sort: s1_0.start_time  (actual time=2.2..2.21 rows=9 loops=1)
+        -> Stream results  (cost=8.65 rows=9) (actual time=2.12..2.13 rows=9 loops=1)
+            -> Inner hash join (t1_0.theater_id = s1_0.theater_id)  (cost=8.65 rows=9) (actual time=2.1..2.1 rows=9 loops=1)
+                -> Table scan on t1_0  (cost=0.122 rows=5) (actual time=2.01..2.01 rows=5 loops=1)
+                -> Hash
+                    -> Index lookup on s1_0 using idx_screening_movie_id (movie_id=1)  (cost=3.15 rows=9) (actual time=0.0693..0.0716 rows=9 loops=1)
+    ```
+#### 부하 테스트 결과 (스크린샷)
+> thresholds on metrics 'http_req_duration' have been crossed 계속 발생하여 summary.html 파일이 저장되지 않음.
+
+
+### *인덱스 X, 캐싱 O*
+#### 실행 계획
+- like 비교연산자 적용
+    ```bash
+    -> Sort: m1_0.rlse_date  (cost=51.8 rows=500) (actual time=3.79..3.79 rows=1 loops=1)
+        -> Filter: ((m1_0.title like <cache>(convert(replace('Red Heat','\\','\\\\') using utf8mb4))) and (m1_0.genre_cd = 'ACTION'))  (cost=51.8 rows=500) (actual time=0.633..1.26 rows=1 loops=1)
+            -> Table scan on m1_0  (cost=51.8 rows=500) (actual time=0.42..1.05 rows=500 loops=1)
+    ```
+- 동등연산자 적용
+    ```dockerfile
+    -> Sort: m1_0.rlse_date  (cost=51.8 rows=500) (actual time=0.607..0.607 rows=1 loops=1)
+        -> Filter: ((m1_0.title = 'Red Heat') and (m1_0.genre_cd = 'ACTION'))  (cost=51.8 rows=500) (actual time=0.128..0.517 rows=1 loops=1)
+            -> Table scan on m1_0  (cost=51.8 rows=500) (actual time=0.0718..0.457 rows=500 loops=1)
+    ```
+- 상영시간표 조회 쿼리
+    ```bash
+    -> Sort: s1_0.start_time  (actual time=5.63..5.64 rows=9 loops=1)
+        -> Stream results  (cost=404 rows=2.08) (actual time=1.3..5.51 rows=9 loops=1)
+            -> Inner hash join (s1_0.theater_id = t1_0.theater_id)  (cost=404 rows=2.08) (actual time=1.29..5.47 rows=9 loops=1)
+                -> Filter: (s1_0.movie_id = 1)  (cost=77.3 rows=41.7) (actual time=0.59..4.74 rows=9 loops=1)
+                    -> Table scan on s1_0  (cost=77.3 rows=4168) (actual time=0.586..4.11 rows=4500 loops=1)
+                -> Hash
+                    -> Table scan on t1_0  (cost=0.75 rows=5) (actual time=0.602..0.638 rows=5 loops=1)
+    ```
+
+#### 부하 테스트 결과 (스크린샷)
+![redis_noindex_1](docs/images/k6_01_1_redis_noindex.png)
+![redis_noindex_2](docs/images/k6_01_2_redis_noindex.png)
+
+
+### *인덱스 O, 캐싱 O*
+#### 실행 계획
+- like 비교연산자 적용
+    ```bash
+    -> Sort: m1_0.rlse_date  (cost=0.71 rows=1) (actual time=0.332..0.332 rows=1 loops=1)
+        -> Index range scan on m1_0 using idx_movie_title_genre over (title = 'Red Heat' AND genre_cd = 'ACTION'), with index condition: ((m1_0.title like <cache>(convert(replace('Red Heat','\\','\\\\') using utf8mb4))) and (m1_0.genre_cd = 'ACTION'))  (cost=0.71 rows=1) (actual time=0.2..0.206 rows=1 loops=1)
+    ```
+- 동등연산자 적용
+    ```dockerfile
+    > Sort: m1_0.rlse_date  (cost=0.35 rows=1) (actual time=0.112..0.112 rows=1 loops=1)
+        -> Index lookup on m1_0 using idx_movie_title_genre (title='Red Heat', genre_cd='ACTION')  (cost=0.35 rows=1) (actual time=0.0586..0.0612 rows=1 loops=1)
+    ```
+- 상영시간표 조회 쿼리
+    ```bash
+    -> Nested loop inner join  (cost=6.3 rows=9) (actual time=0.273..0.283 rows=9 loops=1)
+        -> Sort: s1_0.start_time  (cost=3.15 rows=9) (actual time=0.255..0.258 rows=9 loops=1)
+            -> Index lookup on s1_0 using idx_screening_movie_id (movie_id=1)  (cost=3.15 rows=9) (actual time=0.209..0.218 rows=9 loops=1)
+        -> Single-row index lookup on t1_0 using PRIMARY (theater_id=s1_0.theater_id)  (cost=0.261 rows=1) (actual time=0.00203..0.00207 rows=1 loops=9)
+    ```
+
+#### 부하 테스트 결과 (스크린샷)
+![redis_index_1](docs/images/k6_02_1_redis_index.png)
+![redis_index_1](docs/images/k6_02_2_redis_index.png)
+
+
 ---
-### 해결할 문제 4
+## 해결할 문제 4
 (문제) API 응답 중 theaterNm 한글 인코딩이 깨져서 나옴.
 ![problem4-1](docs/images/problem4-1.png)
 
@@ -198,5 +434,17 @@ build.gradle 파일을 수정하여 다양한 방법으로 시도하였으나 �
 
 일단 성능테스트 작업이 우선이어서 해결 보류함.
 
+## 해결할 문제 5
+(문제) Redis 캐싱 사용하지 않은 상태로 k6 성능테스트 시 
+thresholds on metrics 'http_req_duration' have been crossed 발생하여 'p(95)<200' 에서 'p(95)<500' 으로 수정하였음.
+실패율 주석처리, duration 시간 늘렸으나 계속 에러 발생 후 결과 파일 저장되지 않음.
+```dockerfile
+thresholds: {
+    http_req_duration: ['p(95)<500'],
+}
+```
+
+
+![problem5-1](docs/images/problem5-1.png)
 
 
