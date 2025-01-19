@@ -153,12 +153,12 @@ spring:
 ### 해결할 문제 3
 **(문제)** Querydsl 의존성 추가 시 Q클래스 생성되지 않는 문제 발생하여
 IntelliJ 의 `Build Complier > Annotation Processors` 설정 변경하니,
-![erd image](docs/images/problem3-2.jpg)
+![problem3-2](docs/images/problem3-2.jpg)
 
 `build/generated/sources/annotationProcessor/java/main` 폴더는 정상적으로 생성되었음.
 해당 폴더가 generated sources root로 marked된 것까지 확인되었으나 Q클래스가 생성되지 않음.
 
-![erd image](docs/images/problem3-1.jpg)
+![problem3-1](docs/images/problem3-1.jpg)
 
 build.gradle 파일을 수정하여 다양한 방법으로 시도하였으나 이틀 동안 해결하지 못하여 일단 Querydsl을 사용하지 않고 진행하기로 함. 나중에 해결해볼 것.
 
@@ -179,6 +179,24 @@ build.gradle 파일을 수정하여 다양한 방법으로 시도하였으나 �
 - 좌석 : (조인) 좌석 ID
 - 예매 : (조인) 예매 ID, 좌석 ID, 회원 ID, 상영시간표 ID
 - 회원 : (조인) 회원 ID
+
+---
+### 해결할 문제 4
+(문제) API 응답 중 theaterNm 한글 인코딩이 깨져서 나옴.
+![problem4-1](docs/images/problem4-1.png)
+
+조치1. application.yml 에 http 인코딩 설정 추가
+![problem4-2](docs/images/problem4-2.png)
+
+조치2. application.yml jdbc url에 characterEncoding=UTF-8 추가
+![problem4-3](docs/images/problem4-3.png)
+
+조치3. WebConfig, Utf8EncodingFilter 추가
+
+세 가지 모든 조치 후 DB 데이터 조회 시에는 한글로 정상적으로 조회되나, http 응답시에만 인코딩이 제대로 작동하지 않음.
+응답값 Header의 Content-Type 이 application/json;charset=UTF-8 인 것도 확인하였음.
+
+일단 성능테스트 작업이 우선이어서 해결 보류함.
 
 
 
