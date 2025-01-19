@@ -62,7 +62,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','11:00:00','12:00:00','admin');
@@ -71,7 +71,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','11:00:00','12:00:00','admin');
@@ -80,7 +80,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','11:00:00','12:00:00','admin');
@@ -89,7 +89,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','11:00:00','12:00:00','admin');
@@ -98,7 +98,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','11:00:00','12:00:00','admin');
@@ -107,7 +107,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','11:00:00','12:00:00','admin');
@@ -116,7 +116,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','11:00:00','12:00:00','admin');
@@ -125,7 +125,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','11:00:00','12:00:00','admin');
@@ -134,7 +134,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','11:00:00','12:00:00','admin');
@@ -143,7 +143,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-16','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','11:00:00','12:00:00','admin');
@@ -152,7 +152,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','11:00:00','12:00:00','admin');
@@ -161,7 +161,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','11:00:00','12:00:00','admin');
@@ -170,7 +170,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','11:00:00','12:00:00','admin');
@@ -179,7 +179,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','11:00:00','12:00:00','admin');
@@ -188,7 +188,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','11:00:00','12:00:00','admin');
@@ -197,7 +197,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','11:00:00','12:00:00','admin');
@@ -206,7 +206,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','11:00:00','12:00:00','admin');
@@ -215,7 +215,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','11:00:00','12:00:00','admin');
@@ -224,7 +224,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','11:00:00','12:00:00','admin');
@@ -233,7 +233,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-17','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','11:00:00','12:00:00','admin');
@@ -242,7 +242,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','11:00:00','12:00:00','admin');
@@ -251,7 +251,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','11:00:00','12:00:00','admin');
@@ -260,7 +260,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','11:00:00','12:00:00','admin');
@@ -269,7 +269,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','11:00:00','12:00:00','admin');
@@ -278,7 +278,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','11:00:00','12:00:00','admin');
@@ -287,7 +287,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','11:00:00','12:00:00','admin');
@@ -296,7 +296,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','11:00:00','12:00:00','admin');
@@ -305,7 +305,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','11:00:00','12:00:00','admin');
@@ -314,7 +314,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','11:00:00','12:00:00','admin');
@@ -323,7 +323,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-18','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','11:00:00','12:00:00','admin');
@@ -332,7 +332,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','11:00:00','12:00:00','admin');
@@ -341,7 +341,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','11:00:00','12:00:00','admin');
@@ -350,7 +350,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','11:00:00','12:00:00','admin');
@@ -359,7 +359,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','11:00:00','12:00:00','admin');
@@ -368,7 +368,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','11:00:00','12:00:00','admin');
@@ -377,7 +377,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','11:00:00','12:00:00','admin');
@@ -386,7 +386,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','11:00:00','12:00:00','admin');
@@ -395,7 +395,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','11:00:00','12:00:00','admin');
@@ -404,7 +404,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','11:00:00','12:00:00','admin');
@@ -413,7 +413,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','11:00:00','12:00:00','admin');
@@ -422,7 +422,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','11:00:00','12:00:00','admin');
@@ -431,7 +431,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','11:00:00','12:00:00','admin');
@@ -440,7 +440,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','11:00:00','12:00:00','admin');
@@ -449,7 +449,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','11:00:00','12:00:00','admin');
@@ -458,7 +458,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','11:00:00','12:00:00','admin');
@@ -467,7 +467,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','11:00:00','12:00:00','admin');
@@ -476,7 +476,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','11:00:00','12:00:00','admin');
@@ -485,7 +485,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','11:00:00','12:00:00','admin');
@@ -494,7 +494,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','11:00:00','12:00:00','admin');
@@ -503,7 +503,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-19','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','11:00:00','12:00:00','admin');
@@ -512,7 +512,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (1,1,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','11:00:00','12:00:00','admin');
@@ -521,7 +521,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (2,2,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','11:00:00','12:00:00','admin');
@@ -530,7 +530,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (3,3,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','11:00:00','12:00:00','admin');
@@ -539,7 +539,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (4,4,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','11:00:00','12:00:00','admin');
@@ -548,7 +548,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (5,5,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','11:00:00','12:00:00','admin');
@@ -557,7 +557,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (6,6,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','11:00:00','12:00:00','admin');
@@ -566,7 +566,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (7,7,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','11:00:00','12:00:00','admin');
@@ -575,7 +575,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (8,8,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','11:00:00','12:00:00','admin');
@@ -584,7 +584,7 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (9,9,'2025-01-20','23:00:00','23:50:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','07:00:00','08:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','09:00:00','10:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','11:00:00','12:00:00','admin');
@@ -593,4 +593,4 @@ insert into screening (movie_id, theater_id, show_date, start_time, end_time, cr
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','17:00:00','18:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','19:00:00','20:00:00','admin');
 insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','21:00:00','22:00:00','admin');
-insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','23:00:00','24:00:00','admin');
+insert into screening (movie_id, theater_id, show_date, start_time, end_time, created_by) values (10,10,'2025-01-20','23:00:00','23:50:00','admin');

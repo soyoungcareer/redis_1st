@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3307/cinema?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3307/cinema?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
     username: cinema_user
     password: cinema_password
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,5 +13,18 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true
+  data:
+    redis:
+      host: localhost
+#      host: redis-container
+      port: 6379
+#      password: cinema_password
   cache:
-    type: simple # 기본적으로 메모리 캐시 사용
+    type: redis
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

@@ -15,24 +15,32 @@ services:
       - ./dummy_data.sql:/docker-entrypoint-initdb.d/dummy_data.sql:ro
     networks:
       - cinema_network
-
-  app:
-    build:
-      context: .
-    container_name: cinema_app
+#  app:
+#    build:
+#      context: .
+#    container_name: cinema_app
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3307/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true
+#      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+#      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+#    depends_on:
+#      - db
+#      - redis
+#    networks:
+#      - cinema_network
+  redis:
+    image: redis:latest
+    container_name: redis-container
     ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3307/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
-    depends_on:
-      - db
-    networks:
-      - cinema_network
+      - "6379:6379"
+    command: [ "redis-server", "--appendonly", "no" ]
+#    command: [ "redis-server", "--appendonly", "yes" ]  # AOF(Append-Only File) 활성화
 
 volumes:
   db_data:
 
 networks:
   cinema_network:
+

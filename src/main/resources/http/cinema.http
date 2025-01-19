@@ -1,7 +1,4 @@
 ### 예매 가능한 영화 조회
-GET http://localhost:8080/api/movies/bookable
+GET http://localhost:8080/api/v1/movies
 Accept: application/json
 
-### 특정 영화 상세 정보 조회 (예: movieId = 1)
-GET http://localhost:8080/api/movies/1
-Accept: application/json

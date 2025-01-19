@@ -96,7 +96,7 @@ CREATE INDEX idx_movie_movie_id ON movie (movie_id);
 -- 제목 + 장르 복합 인덱스
 CREATE INDEX idx_movie_title_genre ON movie (title, genre_cd);
 -- 개봉일 인덱스 (정렬 조건)
-CREATE INDEX idx_movie_rlse_date ON movie (rlseDate);
+CREATE INDEX idx_movie_rlse_date ON movie (rlse_date);
 
 /* screening */
 -- 상영시간표 ID (조인 키)
@@ -122,9 +122,9 @@ CREATE INDEX idx_ticket_ticket_id ON ticket (ticket_id);
 -- 좌석 ID (조인 키)
 CREATE INDEX idx_ticket_seat_id ON ticket (seat_id);
 -- 회원 ID (조인 키)
-CREATE INDEX idx_ticket_user_id ON `user` (user_id);
+CREATE INDEX idx_ticket_user_id ON ticket (user_id);
 -- 상영시간표 ID (조인 키)
-CREATE INDEX idx_ticket_screening_id ON `user` (screening_id);
+CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
 
 /* user */
 -- 회원 ID (조인 키)
