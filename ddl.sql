@@ -8,7 +8,7 @@ CREATE TABLE `movie` (
 	`movie_id`	INT UNSIGNED	NOT NULL AUTO_INCREMENT	COMMENT '영화ID',
 	`title`	VARCHAR(100)	NULL	COMMENT '영화 제목',
 	`grade_cd`	VARCHAR(10)	NULL	COMMENT '영상물 등급 코드[ENUM]',
-	`rlse_date`	DATE	NULL	COMMENT '개봉일',
+	`release_date`	DATE	NULL	COMMENT '개봉일',
 	`thumb_img`	VARCHAR(200)	NULL	COMMENT '썸네일 이미지',
 	`runtime_min`	INT	NULL	COMMENT '러닝 타임(분)',
 	`genre_cd`	VARCHAR(20)	NULL	COMMENT '장르코드[ENUM]',
@@ -91,16 +91,12 @@ CREATE TABLE `ticket` (
 
 /* INDEX 추가 */
 /* movie */
--- 영화 ID (조인 키)
-CREATE INDEX idx_movie_movie_id ON movie (movie_id);
 -- 제목 + 장르 복합 인덱스
 CREATE INDEX idx_movie_title_genre ON movie (title, genre_cd);
 -- 개봉일 인덱스 (정렬 조건)
-CREATE INDEX idx_movie_rlse_date ON movie (rlse_date);
+CREATE INDEX idx_movie_release_date ON movie (release_date);
 
 /* screening */
--- 상영시간표 ID (조인 키)
-CREATE INDEX idx_screening_screening_id ON screening (screening_id);
 -- 영화 ID (조인 키)
 CREATE INDEX idx_screening_movie_id ON screening (movie_id);
 -- 상영관 ID (조인 키)
@@ -108,24 +104,10 @@ CREATE INDEX idx_screening_theater_id ON screening (theater_id);
 -- 시작 시각 인덱스 (정렬 조건)
 CREATE INDEX idx_screening_start_time ON screening (start_time);
 
-/* theater */
--- 상영관 ID (조인 키)
-CREATE INDEX idx_theater_theater_id ON theater (theater_id);
-
-/* seat */
--- 좌석 ID (조인 키)
-CREATE INDEX idx_seat_seat_id ON seat (seat_id);
-
 /* ticket */
--- 예매 ID (조인 키)
-CREATE INDEX idx_ticket_ticket_id ON ticket (ticket_id);
 -- 좌석 ID (조인 키)
 CREATE INDEX idx_ticket_seat_id ON ticket (seat_id);
 -- 회원 ID (조인 키)
 CREATE INDEX idx_ticket_user_id ON ticket (user_id);
 -- 상영시간표 ID (조인 키)
 CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
-
-/* user */
--- 회원 ID (조인 키)
-CREATE INDEX idx_user_user_id ON `user` (user_id);

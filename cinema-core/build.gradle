@@ -11,4 +11,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // QueryDSL 관련 의존성 (Spring Boot 3.x 이상 호환)
+    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'              // QueryDSL JPA 의존성
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+    annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"         // QueryDSL APT(Annotation Processor) 의존성
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"       // Jakarta Annotation API
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"     // Jakarta Persistence API
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorPath = configurations["annotationProcessor"] // 컴파일 시 Annotation Processor가 동작하도록 설정
 }

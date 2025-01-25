@@ -1,20 +1,25 @@
 package com.cinema.application.mapper;
 
+import com.cinema.application.dto.MovieRequestDTO;
+import com.cinema.common.enums.GenreCode;
+import com.cinema.core.domain.Movie;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
-//    @Mapping(source = "gradeCd", target = "gradeCd", qualifiedByName = "convertGradeCode")
-//    Movie toEntity(MovieDTO dto);
+    /*@Mapping(source = "genreCd", target = "genreCd", qualifiedByName = "convertGenreCode")
+    Movie toEntity(MovieRequestDTO dto);
 
-//    MovieDTO toDTO(Movie movie);
+    MovieRequestDTO toDTO(Movie movie);
 
-    /*@Named("convertGradeCode")
-    default String convertGradeCode(String gradeCode) {
+    @Named("convertGenreCode")
+    default String convertGenreCode(String genreCode) {
         try {
-            return GradeCode.fromCode(gradeCode).getDescription();
+            return GenreCode.fromCode(genreCode).getDescription();
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid grade code: " + gradeCode, e);
+            throw new IllegalArgumentException("Invalid genre code: " + genreCode, e);
         }
     }*/
 }

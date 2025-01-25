@@ -8,7 +8,7 @@ CREATE TABLE `movie` (
 	`movie_id`	INT UNSIGNED	NOT NULL AUTO_INCREMENT	COMMENT '영화ID',
 	`title`	VARCHAR(100)	NULL	COMMENT '영화 제목',
 	`grade_cd`	VARCHAR(10)	NULL	COMMENT '영상물 등급 코드[ENUM]',
-	`rlse_date`	DATE	NULL	COMMENT '개봉일',
+	`release_date`	DATE	NULL	COMMENT '개봉일',
 	`thumb_img`	VARCHAR(200)	NULL	COMMENT '썸네일 이미지',
 	`runtime_min`	INT	NULL	COMMENT '러닝 타임(분)',
 	`genre_cd`	VARCHAR(20)	NULL	COMMENT '장르코드[ENUM]',

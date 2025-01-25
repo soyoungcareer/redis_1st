@@ -21,8 +21,8 @@ public abstract class BaseEntity implements Serializable {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    private String updatedAt;
+    private String updatedBy;
 
     @LastModifiedDate
-    private LocalDateTime updatedBy;
+    private LocalDateTime updatedAt;
 }

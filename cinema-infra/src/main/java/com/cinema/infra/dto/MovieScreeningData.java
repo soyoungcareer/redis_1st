@@ -1,12 +1,9 @@
 package com.cinema.infra.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -16,9 +13,12 @@ public class MovieScreeningData {
     private Long movieId;
     private String title;
     private String gradeCd; // GradeCode Enum의 name 값
-    private LocalDate rlseDate;
+    private LocalDate releaseDate;
     private String thumbImg;
-    private int runtimeMin;
+    private Integer runtimeMin;
     private String genreCd; // GenreCode Enum의 name 값
-    private List<ScreeningData> screenings;
+    private Long screeningId;
+    private String theaterNm;
+    private LocalTime startTime;
+    private LocalTime endTime;
 }

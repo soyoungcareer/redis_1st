@@ -67,7 +67,7 @@
 
 ---
 
-## 해결할 문제 1 - 해결 완료
+## ~~해결할 문제 1~~ - 해결 완료
 **(문제)** 애플리케이션 실행 시 다음과 같은 오류 발생하여 정상적으로 실행되지 않음.
 ```dockerfile
 ***************************
@@ -150,7 +150,7 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
 ```
 
-## 해결할 문제 3
+## ~~해결할 문제 3~~ - 해결 완료
 **(문제)** Querydsl 의존성 추가 시 Q클래스 생성되지 않는 문제 발생하여
 IntelliJ 의 `Build Complier > Annotation Processors` 설정 변경하니,
 ![problem3-2](docs/images/problem3-2.jpg)
@@ -164,7 +164,28 @@ build.gradle 파일을 수정하여 다양한 방법으로 시도하였으나 �
 
 멀티 모듈을 사용함에 따른 모듈 간 의존성 설정 문제일수도 있을 것 같음.
 
+**(해결 완료)**
+1. intelliJ 설정 변경 : Settings > Build > Complier > Annotation Processors
+2. gradle.build 파일 수정 - 컴파일 시 Annotation Processor가 동작하도록 설정
 
+   ```dockerfile
+    tasks.withType(JavaCompile) {
+        options.annotationProcessorPath = configurations["annotationProcessor"] // 컴파일 시 Annotation Processor가 동작하도록 설정
+    }
+    ```
+3. gradle.build 파일 수정 - 의존성 추가
+   ```dockerfile
+    dependencies {
+        // QueryDSL 관련 의존성 (Spring Boot 3.x 이상 호환)
+        implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'              // QueryDSL JPA 의존성
+        implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+        annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"         // QueryDSL APT(Annotation Processor) 의존성
+        annotationProcessor "jakarta.annotation:jakarta.annotation-api"       // Jakarta Annotation API
+        annotationProcessor "jakarta.persistence:jakarta.persistence-api"     // Jakarta Persistence API
+   }
+    ```
+4. Q클래스 생성 확인
+![problem3-3](docs/images/problem3-3.png)
 ---
 
 # [2주차] 성능 테스트
@@ -387,6 +408,7 @@ EXPLAIN ANALYZE
     ```
 
 #### 부하 테스트 결과 (스크린샷)
+
 ![redis_noindex_1](docs/images/k6_01_1_redis_noindex.png)
 ![redis_noindex_2](docs/images/k6_01_2_redis_noindex.png)
 
@@ -412,6 +434,7 @@ EXPLAIN ANALYZE
     ```
 
 #### 부하 테스트 결과 (스크린샷)
+
 ![redis_index_1](docs/images/k6_02_1_redis_index.png)
 ![redis_index_1](docs/images/k6_02_2_redis_index.png)
 
@@ -419,12 +442,15 @@ EXPLAIN ANALYZE
 ---
 ## 해결할 문제 4
 (문제) API 응답 중 theaterNm 한글 인코딩이 깨져서 나옴.
+
 ![problem4-1](docs/images/problem4-1.png)
 
 조치1. application.yml 에 http 인코딩 설정 추가
+
 ![problem4-2](docs/images/problem4-2.png)
 
 조치2. application.yml jdbc url에 characterEncoding=UTF-8 추가
+
 ![problem4-3](docs/images/problem4-3.png)
 
 조치3. WebConfig, Utf8EncodingFilter 추가
@@ -446,5 +472,50 @@ thresholds: {
 
 
 ![problem5-1](docs/images/problem5-1.png)
+
+
+---
+
+## [2주차] 피드백 후 수정사항
+<span style="color: #2D3748; background-color: #fff5b1"><strong>기존테이블</strong></span>
+![corrected_erd image](docs/images/corrected_erd.png)
+
+<span style="color: #2D3748; background-color: #fff5b1"><strong>피드백 후 수정테이블</strong></span>
+![corrected_erd2 image](docs/images/corrected_erd2.png)
+
+1. ✅ (축약어 지양) movie.rlse_date -> movie.release_date 컬럼명 수정
+2. ✅ docker-compose.yml 의 DB에 TimeZone, Collation, Charset 설정하기
+3. ✅ Controller에 파라미터 검증 조건 추가 -> `@Valid` 사용
+4. ✅ 인덱스 설정 변경 -> join에 사용되는 컬럼이 PK인 경우 굳이 인덱스로 만들어주지 않아도 됨.
+    ```sql
+    /* movie */
+    -- 제목 + 장르 복합 인덱스
+    CREATE INDEX idx_movie_title_genre ON movie (title, genre_cd);
+    -- 개봉일 인덱스 (정렬 조건)
+    CREATE INDEX idx_movie_release_date ON movie (release_date);
+    
+    /* screening */
+    -- 영화 ID (조인 키)
+    CREATE INDEX idx_screening_movie_id ON screening (movie_id);
+    -- 상영관 ID (조인 키)
+    CREATE INDEX idx_screening_theater_id ON screening (theater_id);
+    -- 시작 시각 인덱스 (정렬 조건)
+    CREATE INDEX idx_screening_start_time ON screening (start_time);
+    
+    /* ticket */
+    -- 좌석 ID (조인 키)
+    CREATE INDEX idx_ticket_seat_id ON ticket (seat_id);
+    -- 회원 ID (조인 키)
+    CREATE INDEX idx_ticket_user_id ON ticket (user_id);
+    -- 상영시간표 ID (조인 키)
+    CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
+    ```
+5. ✅ N+1 문제 해결 -> 기존 Movie 조회, MovieId별 Screening List 조회 두 가지로 나누어서 조회하여 N+1 문제 발생함.
+Querydsl로 변경하여 한 번에 조회할 수 있도록 변경함.
+![nPlusOneSolved_image](docs/images/nPlusOneSolved.png)
+
+
+
+
 
 
