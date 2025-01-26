@@ -13,6 +13,4 @@ import java.util.List;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long>, MovieRepositoryCustom {
-    // 필수 조회 정보 : 영화 제목, 영상물 등급, 개봉일, 썸네일 이미지, 러닝 타임(분), 영화 장르, 상영관 이름, 상영 시간표(시작시각, 종료시각)
-
 }

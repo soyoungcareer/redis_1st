@@ -21,9 +21,6 @@ public class Ticket extends BaseEntity implements Serializable {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "seat_id")
-    private Long seatId;
-
-    @Column(name = "time_id")
-    private Long timeId;
+    @Column(name = "screening_id")
+    private Long screeningId;
 }

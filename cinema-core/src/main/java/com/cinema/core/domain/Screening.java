@@ -20,14 +20,8 @@ public class Screening extends BaseEntity implements Serializable {
     @Column(name = "screening_id", columnDefinition = "INT UNSIGNED")
     private Long screeningId;
 
-    /*@Column(name = "movie_id")
-    private Long movieId;
-
-    @Column(name = "theater_id")
-    private Long theaterId;
-
     @Column(name = "show_date")
-    private LocalDate showDate;*/
+    private LocalDate showDate;
 
     @Column(name = "start_time")
     private LocalTime startTime;

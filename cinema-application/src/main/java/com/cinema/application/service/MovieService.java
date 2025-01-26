@@ -2,15 +2,14 @@ package com.cinema.application.service;
 
 import com.cinema.application.dto.MovieRequestDTO;
 import com.cinema.application.dto.MovieResponseDTO;
+import com.cinema.application.dto.TicketRequestDTO;
 import com.cinema.common.enums.GenreCode;
 import com.cinema.common.enums.GradeCode;
-import com.cinema.core.domain.QMovie;
-import com.cinema.core.domain.QScreening;
+import com.cinema.core.domain.Ticket;
 import com.cinema.infra.dto.MovieScreeningData;
 import com.cinema.infra.dto.ScreeningData;
 import com.cinema.infra.repository.MovieRepository;
-import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.cinema.infra.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -24,13 +23,19 @@ import java.util.stream.Collectors;
 @Service
 public class MovieService {
     private final MovieRepository movieRepository;
+    private final SeatRepository seatRepository;
 
+    /**
+     * 영화별 상영시간표 조회
+     * */
+    // TODO : 캐시 전략 변경해볼 것!
     @Cacheable(
             value = "movieScreenings",
             key = "(#title ?: '').concat('_').concat(#genreCd ?: '')",
             unless = "#result.isEmpty()"
     )
     public List<MovieResponseDTO> getMovieScreenings(MovieRequestDTO movieRequestDTO) {
+        // 필수 조회 정보 : 영화 제목, 영상물 등급, 개봉일, 썸네일 이미지, 러닝 타임(분), 영화 장르, 상영관 이름, 상영 시간표(시작시각, 종료시각)
         String title = movieRequestDTO.getTitle();
         String genreCd = movieRequestDTO.getGenreCd();
         List<MovieScreeningData> movies = movieRepository.findMoviesWithScreenings(title, genreCd);

@@ -52,8 +52,9 @@ DROP TABLE IF EXISTS `seat`;
 
 CREATE TABLE `seat` (
 	`seat_id`	INT UNSIGNED	NOT NULL AUTO_INCREMENT	COMMENT '좌석ID',
+	`theater_id`	INT UNSIGNED	NOT NULL	COMMENT '상영관ID',
 	`seat_type_cd`	VARCHAR(20)	NULL	COMMENT '좌석유형코드[ENUM]',
-	`seat_nm`	VARCHAR(20)	NULL	COMMENT '좌석명',
+	`seat_name_cd`	VARCHAR(20)	NULL	COMMENT '좌석명[ENUM]',
 	`created_by`	VARCHAR(20)	NULL	COMMENT '작성자',
 	`created_at`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '작성일',
 	`updated_by`	VARCHAR(20)	NULL	COMMENT '수정자',
@@ -79,7 +80,6 @@ DROP TABLE IF EXISTS `ticket`;
 CREATE TABLE `ticket` (
 	`ticket_id`	INT UNSIGNED	NOT NULL AUTO_INCREMENT	COMMENT '예매ID',
 	`user_id`	VARCHAR(20)	NOT NULL	COMMENT '회원ID',
-	`seat_id`	VARCHAR(20)	NOT NULL	COMMENT '좌석ID',
 	`screening_id`	VARCHAR(20)	NOT NULL	COMMENT '상영시간표ID',
 	`created_by`	VARCHAR(20)	NULL	COMMENT '작성자',
 	`created_at`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '작성일',
@@ -88,6 +88,18 @@ CREATE TABLE `ticket` (
 	PRIMARY KEY (`ticket_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+DROP TABLE IF EXISTS `ticket_seat`;
+
+CREATE TABLE `ticket_seat` (
+	`ticket_seat_id`	INT UNSIGNED	NOT NULL AUTO_INCREMENT	COMMENT '예매좌석ID',
+	`ticket_id`	INT UNSIGNED	NOT NULL	COMMENT '예매ID',
+	`seat_id`	INT UNSIGNED	NOT NULL	COMMENT '좌석ID',
+	`created_by`	VARCHAR(20)	NULL	COMMENT '작성자',
+	`created_at`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '작성일',
+	`updated_by`	VARCHAR(20)	NULL	COMMENT '수정자',
+	`updated_at`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '수정일',
+	PRIMARY KEY (`ticket_seat_id`)
+);
 
 /* INDEX 추가 */
 /* movie */
@@ -104,9 +116,11 @@ CREATE INDEX idx_screening_theater_id ON screening (theater_id);
 -- 시작 시각 인덱스 (정렬 조건)
 CREATE INDEX idx_screening_start_time ON screening (start_time);
 
+/* seat */
+-- 상영관 ID (조인 키)
+CREATE INDEX idx_seat_theater_id ON seat (theater_id);
+
 /* ticket */
--- 좌석 ID (조인 키)
-CREATE INDEX idx_ticket_seat_id ON ticket (seat_id);
 -- 회원 ID (조인 키)
 CREATE INDEX idx_ticket_user_id ON ticket (user_id);
 -- 상영시간표 ID (조인 키)

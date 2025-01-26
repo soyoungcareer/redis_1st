@@ -18,9 +18,12 @@ public class Seat extends BaseEntity implements Serializable {
     @Column(name = "seat_id", columnDefinition = "INT UNSIGNED")
     private Long seatId;
 
+    @Column(name = "theater_id")
+    private Long theaterId;
+
     @Column(name = "seat_type_cd")
     private String seatTypeCd;  // 좌석 유형 코드 [ENUM]
 
-    @Column(name = "seat_nm")
-    private String seatNm;
+    @Column(name = "seat_name_cd")
+    private String seatNameCd;
 }
