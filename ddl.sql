@@ -128,6 +128,6 @@ CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
 
 
 /* Optimistic Lock */
-/* ALTER TABLE ticket ADD COLUMN version INT UNSIGNED DEFAULT 0 NOT NULL;  */
+ALTER TABLE ticket ADD COLUMN version INT UNSIGNED DEFAULT 0 NOT NULL;
 
 

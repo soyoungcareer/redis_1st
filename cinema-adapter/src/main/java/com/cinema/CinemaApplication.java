@@ -8,7 +8,7 @@ import org.springframework.retry.annotation.EnableRetry;
 
 @SpringBootApplication
 @EnableJpaAuditing
-//@EnableRetry    // FIXME : Optimistic Lock
+@EnableRetry    // FIXME : Optimistic Lock
 public class CinemaApplication {
     public static void main(String[] args) {
         SpringApplication.run(CinemaApplication.class, args);

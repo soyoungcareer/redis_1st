@@ -25,7 +25,7 @@ public class Ticket extends BaseEntity implements Serializable {
     private Long screeningId;
 
     // FIXME : Optimistic Lock
-    /*@Version
+    @Version
     @Column(name = "version", nullable = false)
-    private Long version;*/
+    private Long version;
 }

@@ -41,11 +41,11 @@ public class TicketService {
     /**
      * 예매하기
      * */
-    // FIXME : Optimistic Lock
-//    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
-
     // FIXME : AOP Distibuted Lock
 //    @DistributedLock(key = "lock:screening:#{#ticketRequestDTO.screeningId}")
+
+    // FIXME : Optimistic Lock
+    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
     @Transactional
     public void bookTickets(TicketRequestDTO ticketRequestDTO) {
         // FIXME : 명령형 Distibuted Lock
