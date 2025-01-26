@@ -17,6 +17,6 @@ public interface SeatRepository extends JpaRepository<Seat, Long> {
              WHERE sc.screeningId = :screeningId 
                AND s.seatNameCd = :seatNameCd 
             """)
-    Optional<Long> findSeatIdByTheaterIdAndSeatNameCd(@Param("screeningId") Long screeningId,
-                                                      @Param("seatNameCd") String seatNameCd);
+    Optional<Long> findSeatIdByScreeningIdAndSeatNameCd(@Param("screeningId") Long screeningId,
+                                                        @Param("seatNameCd") String seatNameCd);
 }

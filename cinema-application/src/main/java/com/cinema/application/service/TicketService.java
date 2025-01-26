@@ -2,6 +2,7 @@ package com.cinema.application.service;
 
 import com.cinema.application.dto.TicketRequestDTO;
 import com.cinema.common.enums.SeatNameCode;
+import com.cinema.core.annotation.DistributedLock;
 import com.cinema.core.domain.Ticket;
 import com.cinema.core.domain.TicketSeat;
 import com.cinema.infra.repository.SeatRepository;
@@ -11,6 +12,8 @@ import jakarta.persistence.PessimisticLockException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.retry.annotation.Backoff;
@@ -18,6 +21,7 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +31,7 @@ public class TicketService {
     private final TicketRepository ticketRepository;
     private final TicketSeatRepository ticketSeatRepository;
     private final SeatRepository seatRepository;
+    private final RedissonClient redissonClient;
 
     @Value("${max-count.theater-bookable}")
     private int maxTheaterBookableCnt;
@@ -34,9 +39,17 @@ public class TicketService {
     /**
      * 예매하기
      * */
-    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
+    // FIXME : Optimistic Lock
+//    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
+
+    // FIXME : AOP Distibuted Lock
+    @DistributedLock(key = "lock:screening:#{#ticketRequestDTO.screeningId}")
     @Transactional
     public void bookTickets(TicketRequestDTO ticketRequestDTO) {
+        // FIXME : 명령형 Distibuted Lock
+//        String lockKey = "lock:screening:" + ticketRequestDTO.getScreeningId();
+//        RLock lock = redissonClient.getLock(lockKey);
+
         // 좌석명을 ENUM으로 변환
         List<SeatNameCode> seatNameEnums = ticketRequestDTO.getSeatNames().stream()
                 .map(SeatNameCode::fromString)
@@ -46,7 +59,13 @@ public class TicketService {
             throw new NullPointerException("좌석 정보가 없습니다.");
         }
 
-        try {
+//        try {
+            // FIXME : 명령형 Distibuted Lock
+            // tyrLock(waitTime 락 대기 시간, leaseTime 락 유지 시간, 락 획득 실패 시)
+//            if (!lock.tryLock(5, 3, TimeUnit.SECONDS)) {
+//                throw new IllegalStateException("동일 좌석이 이미 예약 중입니다. 나중에 다시 시도해 주세요.");
+//            }
+
             // 좌석 예약 가능 여부 확인
             if (!this.areSeatsBookable(ticketRequestDTO.getScreeningId(), seatNameEnums)) {
                 throw new IllegalStateException("선택한 좌석 중 예약이 불가능한 좌석이 있습니다.");
@@ -71,7 +90,7 @@ public class TicketService {
             // 예매 좌석 저장
             List<TicketSeat> ticketSeats = seatNameEnums.stream()
                     .map(seat -> {
-                        Long seatId = seatRepository.findSeatIdByTheaterIdAndSeatNameCd(
+                        Long seatId = seatRepository.findSeatIdByScreeningIdAndSeatNameCd(
                                 ticketRequestDTO.getScreeningId(), seat.name()
                         ).orElseThrow(() -> new IllegalArgumentException("좌석 정보를 찾을 수 없습니다: " + seat.name()));
 
@@ -85,12 +104,22 @@ public class TicketService {
 //        } catch (PessimisticLockException e) {
 
         // FIXME : Optimistic Lock
-        } catch (ObjectOptimisticLockingFailureException e) {
-            log.error("좌석 예약 중 락 충돌 발생: screeningId={}, seatNameEnums={}",
-                    ticketRequestDTO.getScreeningId(),
-                    seatNameEnums);
-            throw new IllegalStateException("동일 좌석이 이미 예약 중입니다. 나중에 다시 시도해 주세요.");
-        }
+//        } catch (ObjectOptimisticLockingFailureException e) {
+//            log.error("좌석 예약 중 락 충돌 발생: screeningId={}, seatNameEnums={}",
+//                    ticketRequestDTO.getScreeningId(),
+//                    seatNameEnums);
+//            throw new IllegalStateException("동일 좌석이 이미 예약 중입니다. 나중에 다시 시도해 주세요.");
+//        }
+
+        // FIXME : 명령형 Distibuted Lock
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException("예매 처리 중 문제가 발생했습니다.");
+//        } finally {
+//            // 락 해제
+//            if (lock.isHeldByCurrentThread()) {
+//                lock.unlock();
+//            }
+//        }
     }
 
     /**
@@ -131,7 +160,7 @@ public class TicketService {
         List<Long> bookedSeats = ticketSeatRepository.findBookedSeatsByScreeningId(screeningId);
 
         for (SeatNameCode seat : seatNameEnums) {
-            Long seatId = seatRepository.findSeatIdByTheaterIdAndSeatNameCd(screeningId, seat.name())
+            Long seatId = seatRepository.findSeatIdByScreeningIdAndSeatNameCd(screeningId, seat.name())
                     .orElseThrow(() -> new IllegalArgumentException("좌석 정보를 찾을 수 없습니다: " + seat.name()));
 
             if (bookedSeats.contains(seatId)) {

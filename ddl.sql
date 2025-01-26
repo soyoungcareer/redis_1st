@@ -127,6 +127,7 @@ CREATE INDEX idx_ticket_user_id ON ticket (user_id);
 CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
 
 
-/* FIXME : Optimistic Lock */
-ALTER TABLE ticket ADD COLUMN version INT UNSIGNED DEFAULT 0 NOT NULL;
+/* Optimistic Lock */
+/* ALTER TABLE ticket ADD COLUMN version INT UNSIGNED DEFAULT 0 NOT NULL;  */
+
 
