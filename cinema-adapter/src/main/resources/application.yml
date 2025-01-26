@@ -36,3 +36,8 @@ spring:
 # 상영시간표별 최대 예매 가능 수
 max-count:
   theater-bookable: 5
+
+logging:
+  level:
+    org.springframework.transaction: DEBUG
+    org.hibernate.SQL: DEBUG
