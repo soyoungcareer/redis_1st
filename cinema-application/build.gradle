@@ -19,6 +19,11 @@ dependencies {
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"       // Jakarta Annotation API
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"     // Jakarta Persistence API
 
+    // MapStruct
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // Spring Retry
+    implementation 'org.springframework.retry:spring-retry'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'  // AOP 활성화 필요
 }

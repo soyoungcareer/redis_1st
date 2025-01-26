@@ -12,6 +12,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +34,7 @@ public class TicketService {
     /**
      * 예매하기
      * */
+    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
     @Transactional
     public void bookTickets(TicketRequestDTO ticketRequestDTO) {
         // 좌석명을 ENUM으로 변환
@@ -78,7 +82,10 @@ public class TicketService {
             ticketSeatRepository.saveAll(ticketSeats);
 
         // FIXME : Pessimistic Lock
-        } catch (PessimisticLockException e) {
+//        } catch (PessimisticLockException e) {
+
+        // FIXME : Optimistic Lock
+        } catch (ObjectOptimisticLockingFailureException e) {
             log.error("좌석 예약 중 락 충돌 발생: screeningId={}, seatNameEnums={}",
                     ticketRequestDTO.getScreeningId(),
                     seatNameEnums);

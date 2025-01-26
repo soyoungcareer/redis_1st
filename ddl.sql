@@ -125,3 +125,8 @@ CREATE INDEX idx_seat_theater_id ON seat (theater_id);
 CREATE INDEX idx_ticket_user_id ON ticket (user_id);
 -- 상영시간표 ID (조인 키)
 CREATE INDEX idx_ticket_screening_id ON ticket (screening_id);
+
+
+/* FIXME : Optimistic Lock */
+ALTER TABLE ticket ADD COLUMN version INT UNSIGNED DEFAULT 0 NOT NULL;
+
