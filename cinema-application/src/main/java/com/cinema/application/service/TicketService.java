@@ -5,6 +5,7 @@ import com.cinema.common.enums.SeatNameCode;
 import com.cinema.core.annotation.DistributedLock;
 import com.cinema.core.domain.Ticket;
 import com.cinema.core.domain.TicketSeat;
+import com.cinema.infra.lock.DistributedLockUtil;
 import com.cinema.infra.repository.SeatRepository;
 import com.cinema.infra.repository.TicketRepository;
 import com.cinema.infra.repository.TicketSeatRepository;
@@ -32,6 +33,7 @@ public class TicketService {
     private final TicketSeatRepository ticketSeatRepository;
     private final SeatRepository seatRepository;
     private final RedissonClient redissonClient;
+    private final DistributedLockUtil lockUtil;
 
     @Value("${max-count.theater-bookable}")
     private int maxTheaterBookableCnt;
@@ -43,21 +45,15 @@ public class TicketService {
 //    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
 
     // FIXME : AOP Distibuted Lock
-    @DistributedLock(key = "lock:screening:#{#ticketRequestDTO.screeningId}")
+//    @DistributedLock(key = "lock:screening:#{#ticketRequestDTO.screeningId}")
     @Transactional
     public void bookTickets(TicketRequestDTO ticketRequestDTO) {
         // FIXME : 명령형 Distibuted Lock
 //        String lockKey = "lock:screening:" + ticketRequestDTO.getScreeningId();
 //        RLock lock = redissonClient.getLock(lockKey);
 
-        // 좌석명을 ENUM으로 변환
-        List<SeatNameCode> seatNameEnums = ticketRequestDTO.getSeatNames().stream()
-                .map(SeatNameCode::fromString)
-                .collect(Collectors.toList());
-
-        if (seatNameEnums == null || seatNameEnums.isEmpty()) {
-            throw new NullPointerException("좌석 정보가 없습니다.");
-        }
+        // FIXME : 함수형 Distibuted Lock
+        String lockKey = "lock:screening:" + ticketRequestDTO.getScreeningId();
 
 //        try {
             // FIXME : 명령형 Distibuted Lock
@@ -65,6 +61,16 @@ public class TicketService {
 //            if (!lock.tryLock(5, 3, TimeUnit.SECONDS)) {
 //                throw new IllegalStateException("동일 좌석이 이미 예약 중입니다. 나중에 다시 시도해 주세요.");
 //            }
+
+        // FIXME : 함수형 Distibuted Lock
+        lockUtil.executeWithLock(lockKey, 5, 3, () -> {
+            List<SeatNameCode> seatNameEnums = ticketRequestDTO.getSeatNames().stream()
+                    .map(SeatNameCode::fromString)
+                    .collect(Collectors.toList());
+
+            if (seatNameEnums == null || seatNameEnums.isEmpty()) {
+                throw new NullPointerException("좌석 정보가 없습니다.");
+            }
 
             // 좌석 예약 가능 여부 확인
             if (!this.areSeatsBookable(ticketRequestDTO.getScreeningId(), seatNameEnums)) {
@@ -99,6 +105,9 @@ public class TicketService {
                     .collect(Collectors.toList());
 
             ticketSeatRepository.saveAll(ticketSeats);
+
+            return null;
+        });
 
         // FIXME : Pessimistic Lock
 //        } catch (PessimisticLockException e) {
