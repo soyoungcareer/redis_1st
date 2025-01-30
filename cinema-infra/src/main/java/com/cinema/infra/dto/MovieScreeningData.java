@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieScreeningData {

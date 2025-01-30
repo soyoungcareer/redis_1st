@@ -2,13 +2,11 @@ package com.cinema.core.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 
 @Entity
 @Getter
-@Setter
 @Table(name = "ticket_seat")
 public class TicketSeat extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -9104093970044754227L;

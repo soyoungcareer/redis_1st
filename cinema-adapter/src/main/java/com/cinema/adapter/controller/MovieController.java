@@ -2,11 +2,9 @@ package com.cinema.adapter.controller;
 
 import com.cinema.application.dto.MovieRequestDTO;
 import com.cinema.application.dto.MovieResponseDTO;
-import com.cinema.application.dto.TicketRequestDTO;
 import com.cinema.application.service.MovieService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

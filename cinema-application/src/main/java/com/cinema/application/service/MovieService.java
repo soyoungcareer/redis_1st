@@ -28,7 +28,7 @@ public class MovieService {
     /**
      * 영화별 상영시간표 조회
      * */
-    // TODO : 캐시 전략 변경해볼 것!
+    // TODO : 캐시 전략 변경해볼 것! (전체 데이터 캐싱 후 필터링하는 방식?)
     @Cacheable(
             value = "movieScreenings",
             key = "(#title ?: '').concat('_').concat(#genreCd ?: '')",

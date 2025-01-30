@@ -2,27 +2,26 @@ package com.cinema.application.service;
 
 import com.cinema.application.dto.TicketRequestDTO;
 import com.cinema.common.enums.SeatNameCode;
-import com.cinema.core.annotation.DistributedLock;
 import com.cinema.core.domain.Ticket;
 import com.cinema.core.domain.TicketSeat;
 import com.cinema.infra.lock.DistributedLockUtil;
 import com.cinema.infra.repository.SeatRepository;
 import com.cinema.infra.repository.TicketRepository;
 import com.cinema.infra.repository.TicketSeatRepository;
-import jakarta.persistence.PessimisticLockException;
-import jakarta.transaction.Transactional;
+import com.cinema.infra.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +31,8 @@ public class TicketService {
     private final TicketRepository ticketRepository;
     private final TicketSeatRepository ticketSeatRepository;
     private final SeatRepository seatRepository;
+    private final UserRepository userRepository;
+
     private final RedissonClient redissonClient;
     private final DistributedLockUtil lockUtil;
 
@@ -41,125 +42,123 @@ public class TicketService {
     /**
      * 예매하기
      * */
-    // FIXME : AOP Distibuted Lock
-//    @DistributedLock(key = "lock:screening:#{#ticketRequestDTO.screeningId}")
-
-    // FIXME : Optimistic Lock
-    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
-    @Transactional
+    @Retryable(value = OptimisticLockingFailureException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
     public void bookTickets(TicketRequestDTO ticketRequestDTO) {
-        // FIXME : 명령형 Distibuted Lock
-//        String lockKey = "lock:screening:" + ticketRequestDTO.getScreeningId();
-//        RLock lock = redissonClient.getLock(lockKey);
+        List<SeatNameCode> seatNameEnums = ticketRequestDTO.getSeatNames().stream()
+                .map(SeatNameCode::fromString)
+                .collect(Collectors.toList());
 
-        // FIXME : 함수형 Distibuted Lock
+        // 사용자 확인
+        if (!this.isUserExists(ticketRequestDTO.getUserId())) {
+            throw new NoSuchElementException("사용자 정보가 없습니다. ID : " + ticketRequestDTO.getUserId());
+        }
+
+        // 좌석 예약 가능 여부 확인
+        if (!this.areSeatsBookable(ticketRequestDTO.getScreeningId(), seatNameEnums)) {
+            throw new IllegalStateException("선택한 좌석 중 예약이 불가능한 좌석이 있습니다.");
+        }
+
+        // 좌석 연속 여부 확인 (동일한 라인인지)
+        if (!this.areSeatsConsecutive(seatNameEnums)) {
+            throw new IllegalStateException("좌석은 동일한 행이면서 연속적이어야 합니다.");
+        }
+
+        // 상영시간표별 최대 5개 좌석 예약 가능
+        if (!this.isBookingExceed(ticketRequestDTO, seatNameEnums.size())) {
+            throw new IllegalStateException("상영시간표당 예매 가능 좌석 수를 초과하였습니다.");
+        }
+
+        // lock을 획득한 요청에 대해서만 Transactional 적용하기 위해 분리
         String lockKey = "lock:screening:" + ticketRequestDTO.getScreeningId();
-
-//        try {
-            // FIXME : 명령형 Distibuted Lock
-            // tyrLock(waitTime 락 대기 시간, leaseTime 락 유지 시간, 락 획득 실패 시)
-//            if (!lock.tryLock(5, 3, TimeUnit.SECONDS)) {
-//                throw new IllegalStateException("동일 좌석이 이미 예약 중입니다. 나중에 다시 시도해 주세요.");
-//            }
-
-        // FIXME : 함수형 Distibuted Lock
         lockUtil.executeWithLock(lockKey, 5, 3, () -> {
-            List<SeatNameCode> seatNameEnums = ticketRequestDTO.getSeatNames().stream()
-                    .map(SeatNameCode::fromString)
-                    .collect(Collectors.toList());
-
-            if (seatNameEnums == null || seatNameEnums.isEmpty()) {
-                throw new NullPointerException("좌석 정보가 없습니다.");
-            }
-
-            // 좌석 예약 가능 여부 확인
-            if (!this.areSeatsBookable(ticketRequestDTO.getScreeningId(), seatNameEnums)) {
-                throw new IllegalStateException("선택한 좌석 중 예약이 불가능한 좌석이 있습니다.");
-            }
-
-            // 좌석 연속 여부 확인 (동일한 라인인지)
-            if (!this.areSeatsConsecutive(seatNameEnums)) {
-                throw new IllegalStateException("좌석은 동일한 행이면서 연속적이어야 합니다.");
-            }
-
-            // 상영시간표별 최대 5개 좌석 예약 가능
-            if (!this.isBookingExceed(ticketRequestDTO, seatNameEnums.size())) {
-                throw new IllegalStateException("상영시간표당 예매 가능 좌석 수를 초과하였습니다.");
-            }
-
-            // 예매 저장
-            Ticket ticket = new Ticket();
-            ticket.setUserId(ticketRequestDTO.getUserId());
-            ticket.setScreeningId(ticketRequestDTO.getScreeningId());
-            Ticket savedTicket = ticketRepository.save(ticket);
-
-            // 예매 좌석 저장
-            List<TicketSeat> ticketSeats = seatNameEnums.stream()
-                    .map(seat -> {
-                        Long seatId = seatRepository.findSeatIdByScreeningIdAndSeatNameCd(
-                                ticketRequestDTO.getScreeningId(), seat.name()
-                        ).orElseThrow(() -> new IllegalArgumentException("좌석 정보를 찾을 수 없습니다: " + seat.name()));
-
-                        return new TicketSeat(savedTicket.getTicketId(), seatId);
-                    })
-                    .collect(Collectors.toList());
-
-            ticketSeatRepository.saveAll(ticketSeats);
-
+            bookTicketsWithTransaction(ticketRequestDTO, seatNameEnums);
             return null;
         });
-
-        // FIXME : Pessimistic Lock
-//        } catch (PessimisticLockException e) {
-
-        // FIXME : Optimistic Lock
-//        } catch (ObjectOptimisticLockingFailureException e) {
-//            log.error("좌석 예약 중 락 충돌 발생: screeningId={}, seatNameEnums={}",
-//                    ticketRequestDTO.getScreeningId(),
-//                    seatNameEnums);
-//            throw new IllegalStateException("동일 좌석이 이미 예약 중입니다. 나중에 다시 시도해 주세요.");
-//        }
-
-        // FIXME : 명령형 Distibuted Lock
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException("예매 처리 중 문제가 발생했습니다.");
-//        } finally {
-//            // 락 해제
-//            if (lock.isHeldByCurrentThread()) {
-//                lock.unlock();
-//            }
-//        }
     }
 
     /**
-     * 좌석 연속 여부 확인 (동일한 라인인지)
+     * 예매 정보 저장
+     * */
+    @Transactional
+    public void bookTicketsWithTransaction(TicketRequestDTO ticketRequestDTO, List<SeatNameCode> seatNameEnums) {
+        // 예매 저장
+        Ticket ticket = Ticket.builder()
+                .userId(ticketRequestDTO.getUserId())
+                .screeningId(ticketRequestDTO.getScreeningId())
+                .build();
+        Ticket savedTicket = ticketRepository.save(ticket);
+        ticketRepository.flush();
+
+        // 예매 좌석 저장
+        List<TicketSeat> ticketSeats = seatNameEnums.stream()
+                .map(seat -> {
+                    Long seatId = seatRepository.findSeatIdByScreeningIdAndSeatNameCd(
+                            ticketRequestDTO.getScreeningId(), seat.name()
+                    ).orElseThrow(() -> new NoSuchElementException("좌석 정보를 찾을 수 없습니다. 상영시간표ID : " + ticketRequestDTO.getScreeningId() + ", 좌석명 : " + seat.name()));
+
+                    return new TicketSeat(savedTicket.getTicketId(), seatId);
+                })
+                .collect(Collectors.toList());
+
+        ticketSeatRepository.saveAll(ticketSeats);
+        ticketSeatRepository.flush();
+    }
+
+    /**
+     * 사용자 확인
+     * */
+    private boolean isUserExists(Long userId) {
+        if (userId == null) {
+            throw new NullPointerException("사용자 정보가 없습니다.");
+        }
+
+        return userRepository.existsById(userId);
+    }
+
+    /**
+     * 좌석 연속 여부 확인
      * */
     private boolean areSeatsConsecutive(List<SeatNameCode> seatNameEnums) {
         if (seatNameEnums == null || seatNameEnums.isEmpty()) {
+            throw new NullPointerException("좌석 정보가 없습니다.");
+        }
+
+        Iterator<Integer> seatIterator = getIntegerIterator(seatNameEnums);
+
+        if (!seatIterator.hasNext()) {
             return false;
         }
 
-        // 좌석명 코드에서 첫 글자를 추출
-        char firstRow = seatNameEnums.get(0).name().charAt(0);
-        List<Integer> seatNumbers = seatNameEnums.stream()
-                .map(seat -> {
-                    String seatName = seat.name();
-                    // 첫 번째 글자가 동일한지 확인
-                    if (seatName.charAt(0) != firstRow) {
-                        throw new IllegalArgumentException("좌석은 동일한 행에 있어야 합니다: " + seatName);
-                    }
-                    // 두 번째 글자부터 숫자 추출
-                    return Integer.parseInt(seatName.substring(1));
-                })
-                .sorted()
-                .collect(Collectors.toList());
+        int prev = seatIterator.next(); // 첫 번째 좌석 번호
 
-        for (int i = 1; i < seatNumbers.size(); i++) {
-            if (seatNumbers.get(i) - seatNumbers.get(i - 1) != 1) {
-                return false;
+        while (seatIterator.hasNext()) {
+            int current = seatIterator.next();
+            if (prev + 1 != current) {
+                throw new IllegalArgumentException("좌석은 연속적으로만 선택할 수 있습니다.");
             }
+            prev = current;
         }
+
         return true;
+    }
+
+    /**
+     * 좌석 동일행 확인
+     * */
+    private static Iterator<Integer> getIntegerIterator(List<SeatNameCode> seatNameEnums) {
+        String firstRow = seatNameEnums.get(0).name().substring(0, 1);
+
+        Iterator<Integer> seatIterator = seatNameEnums.stream()
+                .map(SeatNameCode::name)
+                .peek(seatName -> {
+                    if (!seatName.startsWith(firstRow)) {
+                        throw new IllegalArgumentException("좌석은 동일한 행에 있어야 합니다.");
+                    }
+                })
+                .map(seatName -> Integer.parseInt(seatName.substring(1)))
+                .sorted()
+                .iterator();
+        return seatIterator;
     }
 
     /**
@@ -170,7 +169,7 @@ public class TicketService {
 
         for (SeatNameCode seat : seatNameEnums) {
             Long seatId = seatRepository.findSeatIdByScreeningIdAndSeatNameCd(screeningId, seat.name())
-                    .orElseThrow(() -> new IllegalArgumentException("좌석 정보를 찾을 수 없습니다: " + seat.name()));
+                    .orElseThrow(() -> new NoSuchElementException("좌석 정보를 찾을 수 없습니다. 상영시간표ID : " + screeningId + ", 좌석명 : " + seat.name()));
 
             if (bookedSeats.contains(seatId)) {
                 return false;
