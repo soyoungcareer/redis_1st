@@ -25,6 +25,9 @@ dependencies {
 
     // Google Guava RateLimiter
     implementation 'com.google.guava:guava:32.0.0-jre'
+
+    // Redisson
+    implementation 'org.redisson:redisson-spring-boot-starter:3.21.0'
 }
 
 tasks.named('bootJar') {

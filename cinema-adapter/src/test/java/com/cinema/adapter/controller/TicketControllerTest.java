@@ -39,13 +39,13 @@ public class TicketControllerTest {
         HttpHeaders headers = new HttpHeaders();
 
         // 첫 번째 요청: 정상 예매
-        TicketRequestDTO requestDTO = new TicketRequestDTO(screeningId, userId, List.of("A1"));
+        TicketRequestDTO requestDTO = new TicketRequestDTO(screeningId, userId, List.of("E1"));
         HttpEntity<TicketRequestDTO> request = new HttpEntity<>(requestDTO, headers);
         ResponseEntity<String> firstResponse = restTemplate.exchange(baseUrl, HttpMethod.POST, request, String.class);
         assertThat(firstResponse.getStatusCodeValue()).isEqualTo(200);
 
         // 두 번째 요청: 5분 제한 적용되어야 함 (429 반환 예상)
-        TicketRequestDTO requestDTO2 = new TicketRequestDTO(screeningId, userId, List.of("A2"));
+        TicketRequestDTO requestDTO2 = new TicketRequestDTO(screeningId, userId, List.of("E2"));
         HttpEntity<TicketRequestDTO> request2 = new HttpEntity<>(requestDTO2, headers);
 
         try {

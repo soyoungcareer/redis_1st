@@ -14,6 +14,9 @@ import com.cinema.infra.repository.UserRepository;
 import com.google.common.util.concurrent.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RRateLimiter;
+import org.redisson.api.RateIntervalUnit;
+import org.redisson.api.RateType;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.OptimisticLockingFailureException;
@@ -38,11 +41,15 @@ public class TicketService {
     private final SeatRepository seatRepository;
     private final UserRepository userRepository;
 
-    private final RedissonClient redissonClient;
     private final DistributedLockUtil lockUtil;
 
+    // Google Guava
     private final Map<String, RateLimiter> reservationRateLimiters = new ConcurrentHashMap<>();
     private static final double RESERVATION_RATE = 1.0 / 300; // 5분에 1회 제한
+
+    // Redisson
+    private final RedissonClient redissonClient;
+    private static final String RESERVATION_LIMIT_PREFIX = "rate_limit:reservation:";
 
     @Value("${max-count.theater-bookable}")
     private int maxTheaterBookableCnt;
@@ -60,11 +67,21 @@ public class TicketService {
         }
 
         // RateLimit 적용
+        // 예매 가능 여부 확인
+        // 1) Google Guava
+        /*
         String reservationKey = userId + "-" + screeningId;
 
-        // 예매 가능 여부 확인
         if (reservationRateLimiters.containsKey(reservationKey) &&
             !reservationRateLimiters.get(reservationKey).tryAcquire()) {
+            throw new TooManyRequestsException("해당 상영 일정에 대해 5분 내에 다시 예매할 수 없습니다.");
+        }*/
+
+        // 2) Redisson
+        String reservationKey = RESERVATION_LIMIT_PREFIX + userId + ":" + screeningId;
+        RRateLimiter rateLimiter = redissonClient.getRateLimiter(reservationKey);
+
+        if (rateLimiter.isExists() && !rateLimiter.tryAcquire()) {
             throw new TooManyRequestsException("해당 상영 일정에 대해 5분 내에 다시 예매할 수 없습니다.");
         }
 
@@ -82,11 +99,16 @@ public class TicketService {
 
         // 예매 성공 시에만 5분 제한 적용
         if (bookingSuccess) {
-            reservationRateLimiters.computeIfAbsent(reservationKey, key -> RateLimiter.create(RESERVATION_RATE));
-            reservationRateLimiters.get(reservationKey).tryAcquire();
+            // 1) Google Guava
+            /*reservationRateLimiters.computeIfAbsent(reservationKey, key -> RateLimiter.create(RESERVATION_RATE));
+            reservationRateLimiters.get(reservationKey).tryAcquire();*/
+
+            // 2) Redisson
+            rateLimiter.trySetRate(RateType.PER_CLIENT, 1, 5, RateIntervalUnit.MINUTES); // 5분에 1회 제한
+            rateLimiter.tryAcquire();
             log.info("예매 성공 - {} 제한 적용 (5분)", reservationKey);
         } else {
-            log.error("예매 실패 - {} 제한 적용되지 않음", reservationKey);
+            log.error("예매 실패 - {} 제한 적용되지 않음");
         }
     }
 

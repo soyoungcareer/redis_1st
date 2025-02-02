@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.RateLimiter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.redisson.api.RRateLimiter;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -13,12 +14,15 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @RequiredArgsConstructor
 public class RateLimitingInterceptor implements HandlerInterceptor {
 
-    private final RateLimiter rateLimiter;
+//    private final RateLimiter rateLimiter;    // Google Guava
+    private final RRateLimiter rateLimiter;     // Redisson
+
     private final Map<String, Integer> requestCounts = new ConcurrentHashMap<>();
     private final Map<String, Long> blockedIps = new ConcurrentHashMap<>();
 
@@ -58,7 +62,15 @@ public class RateLimitingInterceptor implements HandlerInterceptor {
             }
 
             // 실시간 요청 속도 제한 적용 (RateLimiter)
-            if (!rateLimiter.tryAcquire()) {
+            // Google Guava
+            /*if (!rateLimiter.tryAcquire()) {
+                response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+                response.getWriter().write("현재 요청량이 너무 많습니다. 잠시 후 다시 시도해주세요.");
+                return false;
+            }*/
+
+            // Redisson
+            if (!rateLimiter.tryAcquire(1, TimeUnit.SECONDS)) {
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
                 response.getWriter().write("현재 요청량이 너무 많습니다. 잠시 후 다시 시도해주세요.");
                 return false;
