@@ -10,6 +10,7 @@ version = '0.0.1-SNAPSHOT'
 dependencies {
     implementation project(':cinema-application')
     implementation project(':cinema-core')
+    implementation project(':cinema-common')
     implementation project(':cinema-infra')
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -21,6 +22,9 @@ dependencies {
     // Spring Retry
     implementation 'org.springframework.retry:spring-retry'
     implementation 'org.springframework.boot:spring-boot-starter-aop'  // AOP 활성화 필요
+
+    // Google Guava RateLimiter
+    implementation 'com.google.guava:guava:32.0.0-jre'
 }
 
 tasks.named('bootJar') {

@@ -2,6 +2,7 @@ package com.cinema.adapter.controller;
 
 import com.cinema.application.dto.TicketRequestDTO;
 import com.cinema.application.service.TicketService;
+import com.cinema.common.response.ApiResponseDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,9 @@ public class TicketController {
      * 예매
      * */
     @PostMapping
-    public ResponseEntity<String> bookTickets(@Valid @RequestBody TicketRequestDTO ticketRequestDTO ) {
+    public ResponseEntity<ApiResponseDTO<String>> bookTickets(@Valid @RequestBody TicketRequestDTO ticketRequestDTO) {
         ticketService.bookTickets(ticketRequestDTO);
-        return ResponseEntity.ok("예매가 성공적으로 완료되었습니다.");
+        return ResponseEntity.ok(ApiResponseDTO.success(null, "예매 성공"));
     }
 }
 

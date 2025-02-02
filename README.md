@@ -12,6 +12,11 @@
 >- MySQL
 >- Docker Compose
 >- IntelliJ Http Request
+>- K6
+>- Junit5
+>- Jacoco
+>- Google guava ratelimiter (단일 서버)
+>- Redisson (분산 애플리케이션)
 
 **Clean Code 작성 요구 사항**
 >- 가독성 (클래스, 변수, 메서드 이름)
