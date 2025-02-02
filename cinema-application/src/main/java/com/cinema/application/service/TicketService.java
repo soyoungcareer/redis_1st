@@ -2,6 +2,7 @@ package com.cinema.application.service;
 
 import com.cinema.application.dto.TicketRequestDTO;
 import com.cinema.common.enums.SeatNameCode;
+import com.cinema.common.exception.TooManyRequestsException;
 import com.cinema.common.response.ApiResponseDTO;
 import com.cinema.core.domain.Ticket;
 import com.cinema.core.domain.TicketSeat;
@@ -64,7 +65,7 @@ public class TicketService {
         // 예매 가능 여부 확인
         if (reservationRateLimiters.containsKey(reservationKey) &&
             !reservationRateLimiters.get(reservationKey).tryAcquire()) {
-            throw new IllegalStateException("해당 상영 일정에 대해 5분 내에 다시 예매할 수 없습니다.");
+            throw new TooManyRequestsException("해당 상영 일정에 대해 5분 내에 다시 예매할 수 없습니다.");
         }
 
         List<SeatNameCode> seatNameEnums = ticketRequestDTO.getSeatNames().stream()

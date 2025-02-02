@@ -40,8 +40,8 @@ public class GlobalExceptionHandler {
                 .body(ApiResponseDTO.error(HttpStatus.NOT_FOUND, 404, "요청한 데이터를 찾을 수 없습니다. " + ex.getMessage()));
     }
 
-    @ExceptionHandler(HttpClientErrorException.TooManyRequests.class)
-    public ResponseEntity<ApiResponseDTO<String>> handleTooManyRequestsException(HttpClientErrorException.TooManyRequests ex) {
+    @ExceptionHandler(TooManyRequestsException.class)
+    public ResponseEntity<ApiResponseDTO<String>> handleTooManyRequestsException(TooManyRequestsException ex) {
         return ResponseEntity
                 .status(HttpStatus.TOO_MANY_REQUESTS)
                 .body(ApiResponseDTO.error(HttpStatus.TOO_MANY_REQUESTS, 429, "요청량을 초과했습니다."));
