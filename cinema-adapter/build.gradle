@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management' // 루트의 dependency-management 상속
+    id 'jacoco'
 }
 
 group = 'com.cinema'
@@ -32,4 +33,26 @@ dependencies {
 
 tasks.named('bootJar') {
     mainClass = 'com.cinema.CinemaApplication'
+}
+
+tasks.jacocoTestReport {
+    dependsOn test // test 실행 후 보고서 생성
+    reports {
+        xml.required = true
+        csv.required = false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.60 // 최소 60% 커버리지 필요
+            }
+        }
+    }
 }
