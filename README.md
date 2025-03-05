@@ -142,7 +142,7 @@ Consider the following:
 
 ---
 
-## 해결할 문제 2
+## ~~해결할 문제 2~~ - 해결 완료
 **(문제)** 엔티티와 테이블 간 자동 매핑이 되지 않음. 
 `application.yml` 파일에 아래와 같이 설정을 하였으나, 스네이크케이스와 카멜케이스 간 자동 변환이 되지 않아 발생하는 문제로 보임.
 임시로 `@Table`, `@Column(name="")`을 사용하여 매핑되게 설정하였음. 나중에 여유가 된다면 해결해볼 예정.
@@ -153,6 +153,14 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+```
+**(해결 완료)**
+```dockerfile
+spring:  
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
 ```
 
 ## ~~해결할 문제 3~~ - 해결 완료
